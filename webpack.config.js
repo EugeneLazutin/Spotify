@@ -8,7 +8,8 @@ module.exports = {
         port: 3000
     },
     devtool: 'cheap-module-eval-source-map',
-    entry: './dev/js/index.js',
+    entry: ['webpack/hot/dev-server', './dev/js/index.js'],
+       // entry: ['./js/main.js'], --> entry: ['webpack/hot/dev-server' , './js/main.js']
     module: {
         loaders: [
             {

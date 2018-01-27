@@ -1,5 +1,32 @@
-$primary: #006699;
+@import "~bootstrap/scss/bootstrap";
 
-h2 {
-	color: $primary;
+$main-dark: #2B2B2B;
+$main-red: #DE1B1B;
+$main-white: #F6F6F6;
+$main-yellow: #E9E581;
+
+html{
+  min-height:100%;
+  position:relative;
+
+  body{
+    height:100%;
+    background-color: $main-white;
+  }
+}
+
+#root{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:hidden;
+}
+
+.menu-container {
+  padding: 10px;
+  margin: 10px;
+  background-color: $main-dark;
+  color: $main-white;
 }

@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import 'bootstrap';
 import React from 'react';
 import ReactDOM from "react-dom";
 import {Provider} from 'react-redux';
@@ -8,6 +9,8 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
 import App from './components/App';
+
+require('../scss/style.scss');
 
 const logger = createLogger();
 const store = createStore(
