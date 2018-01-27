@@ -5,23 +5,27 @@ $main-red: #DE1B1B;
 $main-white: #F6F6F6;
 $main-yellow: #E9E581;
 
-html{
-  min-height:100%;
-  position:relative;
+html {
+  min-height: 100%;
+  position: relative;
 
-  body{
-    height:100%;
+  body {
+    height: 100%;
     background-color: $main-white;
+  }
+
+  a:focus {
+    outline: 0;
   }
 }
 
-#root{
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  overflow:hidden;
+#root {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
 }
 
 .menu-container {

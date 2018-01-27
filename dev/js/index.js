@@ -9,6 +9,8 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
 import App from './components/App';
+import { HashRouter } from 'react-router-dom';
+
 
 require('../scss/style.scss');
 
@@ -20,7 +22,9 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <HashRouter>
+            <App />
+        </HashRouter>
     </Provider>,
     document.getElementById('root')
 );
