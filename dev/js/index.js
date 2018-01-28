@@ -17,6 +17,7 @@ require('../scss/style.scss');
 const logger = createLogger();
 const store = createStore(
     allReducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk, promise, logger)
 );
 

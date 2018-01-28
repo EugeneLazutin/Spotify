@@ -1,15 +1,19 @@
-import {combineReducers} from 'redux';
-import UserReducer from './reducer-users';
-import ActiveUserReducer from './reducer-active-user';
+import { combineReducers } from 'redux';
+import { LOGIN } from '../constants/actionTypes';
+import searchReducer from './searchReducer';
 
-/*
- * We combine all reducers into a single object before updated data is dispatched (sent) to store
- * Your entire applications state (store) is just whatever gets returned from all your reducers
- * */
+function mainReducer (state = { isLogged: false }, action) {
+    switch (action.type) {
+        case LOGIN:
+            return Object.assign({}, state, {isLogged: action.isLogged});
+        default:
+            return state;
+    }
+}
 
 const allReducers = combineReducers({
-    users: UserReducer,
-    activeUser: ActiveUserReducer
+    mainReducer,
+    searchReducer
 });
 
-export default allReducers
+export default allReducers;

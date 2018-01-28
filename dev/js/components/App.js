@@ -1,32 +1,53 @@
-import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { login } from '../actions';
+import AuthMenu from '../containers/AuthMenu';
 import Home from '../containers/home';
 import Login from '../containers/login';
+import Search from '../containers/Search';
+import UnauthMenu from '../containers/UnauthMenu';
+import { getHashParams } from '../services/locationService';
 
 
-const App = () => (
-    <div className="container-fluid h-100">
-        <div className="row h-100">
-            <nav className="col-sm-3 col-md-2 h-100">
-                <Link to='/'>
-                    <div className="menu-container">
-                        <img className="img-fluid" src="/content/spotify.svg"/>
-                    </div>
-                </Link>
-                <Link to="/login">
-                    <div className="menu-container">
-                        Login
-                    </div>
-                </Link>
-            </nav>
-            <main className="col-sm-9 col-md-10 h-100">
-                <Switch>
-                    <Route exact path='/' component={Home}/>
-                    <Route path='/login' component={Login}/>
-                </Switch>
-            </main>
-        </div>
-    </div>
-);
+class App extends Component {
+    componentDidMount () {
+        let hashParams = getHashParams();
 
-export default App;
+        if (hashParams.access_token) {
+            this.props.login(hashParams.access_token);
+        }
+    }
+
+    render () {
+        const {isLogged} = this.props;
+
+        return (
+            <div className="container-fluid h-100">
+                <div className="row h-100">
+                    {isLogged ? <AuthMenu/> : <UnauthMenu/>}
+                    <main className="col-sm-9 col-md-10 h-100">
+                        <Switch>
+                            <Route exact path='/' component={Home}/>
+                            <Route path='/login' component={Login}/>
+                            <Route path='/search' component={Search}/>
+                        </Switch>
+                    </main>
+                </div>
+            </div>
+        );
+    }
+}
+
+function mapStateToProps (state) {
+    return {
+        isLogged: state.mainReducer.isLogged
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({login}, dispatch);
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

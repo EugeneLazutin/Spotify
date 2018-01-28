@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { clientId } from '../constants/app';
+import { connect } from 'react-redux';
 
 class Home extends Component {
+
     render () {
         return (
             <div className="h-100 w-100">
-                HOME PAGE
+                {this.props.isLogged.toString()}
             </div>
         );
     }
 }
 
-export default Home;
+function mapStateToProps (state) {
+    return {
+        isLogged: state.mainReducer.isLogged
+    };
+}
+
+export default connect(mapStateToProps)(Home);
