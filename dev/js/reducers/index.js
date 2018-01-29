@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { LOGIN } from '../constants/actionTypes';
 import searchReducer from './searchReducer';
+import playerReducer from './playerReducer';
 
 function mainReducer (state = { isLogged: false }, action) {
     switch (action.type) {
@@ -12,8 +13,9 @@ function mainReducer (state = { isLogged: false }, action) {
 }
 
 const allReducers = combineReducers({
-    mainReducer,
-    searchReducer
+    main: mainReducer,
+    search: searchReducer,
+    player: playerReducer
 });
 
 export default allReducers;

@@ -14,7 +14,7 @@ class Home extends Component {
 
 function mapStateToProps (state) {
     return {
-        isLogged: state.mainReducer.isLogged
+        isLogged: state.main.isLogged
     };
 }
 

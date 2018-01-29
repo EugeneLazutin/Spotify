@@ -1,0 +1,27 @@
+@import "../../../scss/variables";
+
+.player-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $player-background;
+  border-top: $player-border;
+  justify-content: center;
+
+  .controls {
+
+    .control {
+      border: 0;
+      background-color: $player-background;
+      margin-right: 10px;
+    }
+  }
+
+  .time {
+    color: $progress-bar-base-line;
+
+    &.current {
+      color: $progress-bar-active-line;
+    }
+  }
+}

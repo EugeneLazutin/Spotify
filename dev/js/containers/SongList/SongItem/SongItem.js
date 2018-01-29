@@ -6,7 +6,7 @@ class SongItem extends Component {
         const artist = song.album.artists[0] || {};
 
         return (
-            <div className="song-item">
+            <div className="song-item" onClick={this.play.bind(this)}>
                 <img src={song.album.images[0].url} className="img-fluid"/>
                 <div className="song-info">
                     <div className="info-line" title={artist.name}>
@@ -24,6 +24,10 @@ class SongItem extends Component {
                 </div>
             </div>
         );
+    }
+
+    play () {
+        this.props.setSong(this.props.song);
     }
 }
 

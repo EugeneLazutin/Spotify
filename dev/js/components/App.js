@@ -9,6 +9,7 @@ import Login from '../containers/login';
 import Search from '../containers/Search';
 import UnauthMenu from '../containers/UnauthMenu';
 import { getHashParams } from '../services/locationService';
+import Player from '../containers/Player';
 
 
 class App extends Component {
@@ -24,7 +25,7 @@ class App extends Component {
         const {isLogged} = this.props;
 
         return (
-            <div className="container-fluid h-100">
+            <div className="container-fluid main-wrapper">
                 <div className="row h-100">
                     {isLogged ? <AuthMenu/> : <UnauthMenu/>}
                     <main className="col-sm-9 col-md-10 h-100">
@@ -35,6 +36,7 @@ class App extends Component {
                         </Switch>
                     </main>
                 </div>
+                <Player />
             </div>
         );
     }
@@ -42,7 +44,7 @@ class App extends Component {
 
 function mapStateToProps (state) {
     return {
-        isLogged: state.mainReducer.isLogged
+        isLogged: state.main.isLogged
     };
 }
 

@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { search } from '../../actions/index';
-import SearchBar from './SearchBar';
+import { setSong } from '../../../actions/playerArctions';
+import SongItem from './SongItem';
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        search
+        setSong
     }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(null, mapDispatchToProps)(SongItem);
