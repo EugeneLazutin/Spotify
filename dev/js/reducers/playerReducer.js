@@ -1,8 +1,7 @@
-import { SET_SONG, PLAY, PAUSE, UPDATE_TIME } from '../constants/actionTypes';
+import { SET_SONG, PLAY, PAUSE } from '../constants/actionTypes';
 
 const defaultState = {
     isPlaying: false,
-    time: 0,
     song: null
 };
 
@@ -20,8 +19,6 @@ function playerReducer (state = defaultState, action) {
                 return Object.assign({}, state, {isPlaying: false});
             }
             return state;
-        case UPDATE_TIME:
-            return Object.assign({}, state, {time: action.time});
         default:
             return state;
     }

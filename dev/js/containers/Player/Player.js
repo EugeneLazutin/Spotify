@@ -1,54 +1,51 @@
 import React, { Component } from 'react';
-import ProgressBar from './ProgressBar';
+import { secondsFormat } from '../../services/timeService';
 import './player.scss';
-import moment from 'moment';
 
 class Player extends Component {
     constructor () {
         super();
         this.state = {
-            intervalId: null
+            ratio: 0
         };
+        //same instance for removeEventListener
+        this.updateRatio = this.updateRatio.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.isPlaying && !this.props.isPlaying || !nextProps.time) {
-            this.startTimer();
-        }
-
-        if(!nextProps.isPlaying && this.props.isPlaying) {
-            this.clearTimer();
+    componentDidUpdate () {
+        const isPlaying = !this.audio.paused && !this.audio.ended && this.audio.readyState > 2;
+        if (this.props.isPlaying && !isPlaying) {
+            this.audio.play();
+        } else if (!this.props.isPlaying && isPlaying) {
+            this.audio.pause();
         }
     }
 
-    startTimer() {
-        const step = 1000;
-        this.clearTimer();
-        const intervalId  = setInterval(() => {
-            if(this.props.isPlaying) {
-                this.props.updateTime(this.props.time + step);
-            } else {
-                this.clearTimer();
-            }
-        }, step);
+    componentDidMount () {
+        this.audio.addEventListener('timeupdate', this.updateRatio);
+    }
 
+    componentWillUnmount() {
+        this.audio.removeEventListener('timeupdate', this.updateRatio);
+    }
+
+    updateRatio () {
         this.setState({
-            intervalId
+            ratio: this.audio.currentTime / this.audio.duration
         });
     }
 
-    clearTimer() {
-        if(this.state.intervalId) {
-            clearInterval(this.state.intervalId);
-            this.setState({
-                intervalId: null
-            });
-        }
+    moveHandle (e) {
+        const ratio = (e.clientX - this.line.offsetLeft) / this.line.offsetWidth;
+        this.audio.currentTime = Math.round(ratio * this.audio.duration);
+        this.updateRatio();
     }
 
     render () {
-        const { song, time, isPlaying } = this.props;
-        const songDuration = song && song.duration_ms || 0;
+        const percentage = `${this.state.ratio * 100}%`;
+        const {song, isPlaying} = this.props;
+        const currentTime = this.audio && this.audio.currentTime;
+        const duration = this.audio && this.audio.duration;
 
         return (
             <div className='player-bottom row'>
@@ -61,19 +58,24 @@ class Player extends Component {
                 </div>
 
                 <div className="time current">
-                    {getTime(time)}
+                    {secondsFormat(currentTime)}
                 </div>
-                <ProgressBar />
+
+                <div className='progress-bar-wrapper' ref={el => this.line = el}>
+                    <div className='progress-bar-custom' onClick={this.moveHandle.bind(this)}>
+                        <div className="time-line"/>
+                        <div className="handle" style={{width: percentage}}/>
+                    </div>
+                </div>
+
                 <div className="time">
-                    {getTime(songDuration)}
+                    {secondsFormat(duration)}
                 </div>
+
+                <audio ref={el => this.audio = el} src={song.preview_url}></audio>
             </div>
         );
     }
 }
-
-const getTime = ms => {
-    return moment.utc(ms).format('mm:ss')
-};
 
 export default Player;
