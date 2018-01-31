@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class SongItem extends Component {
     render () {
-        const {song} = this.props;
+        const {song, songId, isPlaying} = this.props;
+        const isSelected = songId === song.id;
         const artist = song.album.artists[0] || {};
 
         return (
@@ -22,12 +23,23 @@ class SongItem extends Component {
                         {song.name}
                     </div>
                 </div>
+                <div className={'control' + (isSelected ? ' selected' : '')}>
+                    <img src={isSelected && isPlaying ? '/content/pause.svg' : '/content/play.svg'} className="image"/>
+                </div>
             </div>
         );
     }
 
     play () {
-        this.props.setSong(this.props.song);
+        if(this.props.song.id === this.props.songId) {
+            if(this.props.isPlaying) {
+                this.props.pause();
+            } else {
+                this.props.play();
+            }
+        } else {
+            this.props.setSong(this.props.song);
+        }
     }
 }
 

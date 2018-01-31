@@ -1,0 +1,14 @@
+@import '../../../scss/variables';
+
+.track-search-container {
+  margin: 10px 0;
+
+  .btn {
+    background-color: $main-dark;
+    color: $main-background;
+  }
+
+  .form-control {
+    border-radius: 0;
+  }
+}

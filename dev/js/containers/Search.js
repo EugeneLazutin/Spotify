@@ -4,7 +4,7 @@ import SongList from './SongList';
 
 export default () => {
     return (
-        <div className="h-100 w-100">
+        <div className="h-100 d-flex flex-column">
             <SearchBar />
             <SongList />
         </div>

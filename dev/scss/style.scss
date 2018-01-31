@@ -3,7 +3,6 @@
 $fa-font-path: "~font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 
-
 html {
   min-height: 100%;
   position: relative;
@@ -24,7 +23,10 @@ html {
 }
 
 .main-wrapper {
-
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
 }
 
 .menu-container {
@@ -32,4 +34,12 @@ html {
   margin: 10px;
   background-color: $main-dark;
   color: $main-background;
+}
+
+.btn:focus, .form-control:focus {
+  box-shadow: none;
+}
+
+.btn {
+  border-radius: 0;
 }

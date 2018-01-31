@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { login } from '../actions';
 import AuthMenu from '../containers/AuthMenu';
 import Home from '../containers/home';
-import Login from '../containers/login';
 import Search from '../containers/Search';
 import UnauthMenu from '../containers/UnauthMenu';
 import { getHashParams } from '../services/locationService';
@@ -26,12 +25,11 @@ class App extends Component {
 
         return (
             <div className="container-fluid main-wrapper">
-                <div className="row h-100">
+                <div className="row">
                     {isLogged ? <AuthMenu/> : <UnauthMenu/>}
-                    <main className="col-sm-9 col-md-10 h-100">
+                    <main className="col-sm-9 col-md-10">
                         <Switch>
                             <Route exact path='/' component={Home}/>
-                            <Route path='/login' component={Login}/>
                             <Route path='/search' component={Search}/>
                         </Switch>
                     </main>
