@@ -1,72 +1,81 @@
 
-.song-list {
-  height: 100%;
-  overflow-y: scroll;
-
+.search-page {
+  flex: 1;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
 
-  .song-item {
-    margin: 20px;
-    width: 100%;
-    position: relative;
+  .song-list {
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
-    @media screen and (min-width: 600px) {
-      width: calc(100% / 3);
-    }
-
-    @media screen and (min-width: 1000px) {
-      width: calc(100% / 6);
-    }
-
-    .song-info {
-      position: absolute;
-      bottom: 0px;
+    .song-item {
+      margin: 20px;
       width: 100%;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.5);
+      position: relative;
 
-      .info-line {
-        margin-left: 5px;
-        margin-right: 5px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+      @media screen and (min-width: 600px) {
+        width: calc(100% / 3);
+      }
 
-        .fa {
+      @media screen and (min-width: 1000px) {
+        width: calc(100% / 6);
+      }
+
+      .song-info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .info-line {
+          margin-left: 5px;
           margin-right: 5px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+
+          .fa {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .control {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(102, 102, 102, 0.51);
+        opacity: 0;
+        text-align: center;
+        cursor: pointer;
+
+        &.selected {
+          opacity: 0.6;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+
+        .image {
+          position: relative;
+          width: 50%;
+          top: 50%;
+          transform: translateY(-50%);
         }
       }
     }
+  }
 
-    .control {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(102, 102, 102, 0.51);
-      opacity: 0;
-      text-align: center;
-      cursor: pointer;
-
-      &.selected {
-        opacity: 0.6;
-      }
-
-      &:hover {
-        opacity: 1;
-      }
-
-      .image {
-        position: relative;
-        width: 50%;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    }
+  .pagination {
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
   }
 }
-
-

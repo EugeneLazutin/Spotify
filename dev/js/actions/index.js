@@ -1,6 +1,7 @@
-import {LOGIN, SEARCH, SEARCH_SUCCESS, SEARCH_ERROR} from '../constants/actionTypes';
-import {dis} from 'redux';
+import {LOGIN, SEARCH, SEARCH_SUCCESS, SEARCH_ERROR, SET_PAGE} from '../constants/actionTypes';
 import axios from 'axios';
+
+const searchLimit = 20;
 
 export const login = (token) => {
     // TODO: where should I put this code?
@@ -15,16 +16,20 @@ export const login = (token) => {
     }
 };
 
-export const searchRequest = () => {
+export const searchRequest = (query, page) => {
     return {
-        type: SEARCH
+        type: SEARCH,
+        query,
+        page
     };
 };
 
-export const setSongs = songs => {
+export const setSongs = (songs, total, limit) => {
     return {
         type: SEARCH_SUCCESS,
-        songs
+        songs,
+        total,
+        limit
     };
 };
 
@@ -36,13 +41,13 @@ export const searchError = message => {
 };
 
 
-export const search = (query) => {
+export const search = (query, page) => {
     return dispatch => {
-        dispatch(searchRequest());
+        dispatch(searchRequest(query, page));
 
-        axios.get(`https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track`)
+        axios.get(`https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&offset=${(page - 1) * searchLimit}&limit=${searchLimit}&`)
             .then(resp => {
-                dispatch(setSongs(resp.data.tracks.items));
+                dispatch(setSongs(resp.data.tracks.items, resp.data.tracks.total, resp.data.tracks.limit));
             })
             .catch(resp => {
                 dispatch(searchError(resp.message));

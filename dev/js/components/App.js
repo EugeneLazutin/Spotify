@@ -9,6 +9,7 @@ import Search from '../containers/Search';
 import UnauthMenu from '../containers/UnauthMenu';
 import { getHashParams } from '../services/locationService';
 import Player from '../containers/Player';
+import CurrTrack from '../containers/CurrTrack';
 
 
 class App extends Component {
@@ -25,12 +26,13 @@ class App extends Component {
 
         return (
             <div className="container-fluid main-wrapper">
-                <div className="row">
+                <div className="row content-body">
                     {isLogged ? <AuthMenu/> : <UnauthMenu/>}
                     <main className="col-sm-9 col-md-10">
                         <Switch>
                             <Route exact path='/' component={Home}/>
                             <Route path='/search' component={Search}/>
+                            <Route path='/current-track' component={CurrTrack}/>
                         </Switch>
                     </main>
                 </div>

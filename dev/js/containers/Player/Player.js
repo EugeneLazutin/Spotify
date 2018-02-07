@@ -25,7 +25,7 @@ class Player extends Component {
         this.audio.addEventListener('timeupdate', this.updateRatio);
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
         this.audio.removeEventListener('timeupdate', this.updateRatio);
     }
 
@@ -41,6 +41,14 @@ class Player extends Component {
         this.updateRatio();
     }
 
+    prevTrack () {
+        this.props.setSong(this.props.prevTrack);
+    }
+
+    nextTrack () {
+        this.props.setSong(this.props.nextTrack);
+    }
+
     render () {
         const percentage = `${this.state.ratio * 100}%`;
         const {song, isPlaying} = this.props;
@@ -50,11 +58,15 @@ class Player extends Component {
         return (
             <div className='player-bottom row'>
                 <div className="controls">
-                    <button className="control"><i className="fa fa-step-backward" aria-hidden="true"></i></button>
-                    <button className="control" onClick={isPlaying ? this.props.pause : this.props.play}>
-                        <i className={'fa ' + (isPlaying ? 'fa-pause' : 'fa-play')} aria-hidden="true"></i>
+                    <button className="control" onClick={this.prevTrack.bind(this)}>
+                        <i className="fa fa-step-backward" aria-hidden="true"/>
                     </button>
-                    <button className="control"><i className="fa fa-step-forward" aria-hidden="true"></i></button>
+                    <button className="control" onClick={isPlaying ? this.props.pause : this.props.play}>
+                        <i className={'fa ' + (isPlaying ? 'fa-pause' : 'fa-play')} aria-hidden="true"/>
+                    </button>
+                    <button className="control" onClick={this.nextTrack.bind(this)}>
+                        <i className="fa fa-step-forward" aria-hidden="true"/>
+                    </button>
                 </div>
 
                 <div className="time current">
@@ -72,7 +84,7 @@ class Player extends Component {
                     {secondsFormat(duration)}
                 </div>
 
-                <audio ref={el => this.audio = el} src={song.preview_url}></audio>
+                <audio ref={el => this.audio = el} src={song.preview_url}/>
             </div>
         );
     }

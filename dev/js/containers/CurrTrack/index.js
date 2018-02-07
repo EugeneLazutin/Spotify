@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { pause, play, setSong, updateTime } from '../../actions/playerArctions';
+import { pause, play, setSong } from '../../actions/playerArctions';
 import { getNextTrack, getPrevTrack } from '../../services/trackService';
-import Player from './Player';
+import CurrTrack from './CurrTrack';
 
 const mapStateToProps = state => {
     return {
-        song: state.player.song || {},
+        song: state.player.song,
         isPlaying: state.player.isPlaying,
         time: state.player.time,
         prevTrack: getPrevTrack(state.search.songs, state.player.song),
@@ -18,9 +18,8 @@ const mapDispatchToProps = dispatch => {
     return bindActionCreators({
         play,
         pause,
-        updateTime,
         setSong
     }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Player);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrTrack);

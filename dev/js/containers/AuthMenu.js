@@ -11,7 +11,7 @@ const AuthMenu = () => {
                     Search
                 </div>
             </Link>
-            <Link to="/now-playing">
+            <Link to="/current-track">
                 <div className="menu-container">
                     Now playing
                 </div>

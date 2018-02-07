@@ -20,7 +20,7 @@ class SearchBar extends Component {
 
     search () {
         if (this.state.query) {
-            this.props.search(this.state.query);
+            this.props.search(this.state.query, 1);
         }
     }
 
