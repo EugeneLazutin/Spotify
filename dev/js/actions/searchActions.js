@@ -1,9 +1,8 @@
 import {SEARCH, SEARCH_SUCCESS} from '../constants/actionTypes';
 import axios from 'axios';
+import {searchLimit} from '../constants/app';
 
-const searchLimit = 20;
-
-export const searchRequest = (query, page) => {
+const searchRequest = (query, page) => {
     return {
         type: SEARCH,
         query,
@@ -11,7 +10,7 @@ export const searchRequest = (query, page) => {
     };
 };
 
-export const setSongs = (songs, total, limit) => {
+const setSongs = (songs, total, limit) => {
     return {
         type: SEARCH_SUCCESS,
         songs,

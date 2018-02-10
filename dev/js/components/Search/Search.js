@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from '../SearchBar';
-import SongList from '../SongList';
+import SongList from './SongList';
 
 class Search extends Component {
     search (query) {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setSong, pause, play } from '../../../actions/playerArctions';
+import { setSong, pause, play } from '../../../../actions/playerArctions';
 import SongItem from './SongItem';
 
 

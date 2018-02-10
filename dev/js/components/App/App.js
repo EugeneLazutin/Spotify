@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AuthMenu from '../../components/AuthMenu';
+import AuthMenu from './AuthMenu';
 import CurrTrack from '../../components/CurrTrack';
 import Player from '../../components/Player';
 import Playlist from '../../components/Playlist';
 import Playlists from '../../components/Playlists';
 import Search from '../../components/Search';
-import UnauthMenu from '../../components/UnauthMenu';
+import UnauthMenu from './UnauthMenu';
 import { getToken, saveToken } from '../../services/utils';
 
 

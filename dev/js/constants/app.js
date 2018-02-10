@@ -3,3 +3,5 @@ const apiUrl = 'https://accounts.spotify.com/';
 
 export const loginUrl = `${apiUrl}authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000/`;
 export const cookieTokenName = 'SpotifyToken';
+export const pageLimit = 20;
+export const searchLimit = 20;

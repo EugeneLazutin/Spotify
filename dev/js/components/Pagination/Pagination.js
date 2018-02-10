@@ -1,5 +1,6 @@
 import React  from 'react';
 import './pagination.scss';
+import {pageLimit} from '../../constants/app';
 
 function Pagination (props) {
     let items = [];
@@ -9,7 +10,7 @@ function Pagination (props) {
         return (null);
     }
 
-    for (let i = 1; i <= pages && i <= 20; i++) {
+    for (let i = 1; i <= pages && i <= pageLimit; i++) {
         items.push((
             <li className={'page-item' + (i === page ? ' active' : '')} key={i}>
                 <a className="page-link" onClick={() => {

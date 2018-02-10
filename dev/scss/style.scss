@@ -56,3 +56,12 @@ i.fa.disabled {
 i.fa.active {
   cursor: pointer;
 }
+
+.page-item.active .page-link {
+  background-color: $main-dark;
+  border-color: $main-dark;
+
+  &:hover {
+    color: white;
+  }
+}

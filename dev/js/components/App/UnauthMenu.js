@@ -1,5 +1,5 @@
 import React from 'react';
-import { loginUrl } from '../constants/app';
+import { loginUrl } from '../../constants/app';
 import Logo from './Logo';
 
 const UnauthMenu = () => {

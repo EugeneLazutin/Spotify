@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_USER } from '../constants/actionTypes';
+import { LOGOUT, SET_USER } from '../constants/actionTypes';
 
 const setUser = (user) => {
     return {
@@ -17,5 +17,11 @@ export const fetchUser = () => {
             .catch(resp => {
                 alert(resp.message);
             });
+    };
+};
+
+export const logout = () => {
+    return {
+        type: LOGOUT
     };
 };

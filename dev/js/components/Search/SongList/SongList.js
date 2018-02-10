@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SongItem from './SongItem';
-import Pagination from '../Pagination';
+import Pagination from '../../Pagination';
 import './songList.scss';
 
 class SongList extends Component {

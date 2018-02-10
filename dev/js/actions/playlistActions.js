@@ -7,8 +7,7 @@ import {
     SHOW_PLAYLIST,
     TOGGLE_VIEW
 } from '../constants/actionTypes';
-
-const itemsLimit = 20;
+import {searchLimit} from '../constants/app';
 
 const setPlaylists = (playlists, total, limit) => {
     return {
@@ -39,7 +38,7 @@ export const fetchPlaylists = (page) => {
     return dispatch => {
         dispatch(setPlaylistPage(page));
 
-        axios.get(`https://api.spotify.com/v1/me/playlists?offset=${(page - 1) * itemsLimit}&limit=${itemsLimit}`)
+        axios.get(`https://api.spotify.com/v1/me/playlists?offset=${(page - 1) * searchLimit}&limit=${searchLimit}`)
             .then(resp => {
                 dispatch(setPlaylists(resp.data.items, resp.data.total, resp.data.limit));
             })

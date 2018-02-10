@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { search } from '../../actions/searchActions';
-import { setTrackList } from '../../actions/playerArctions';
+import { search } from '../../../actions/searchActions';
+import { setTrackList } from '../../../actions/playerArctions';
 import SongList from './SongList';
 
 function mapStateToProps (state) {
