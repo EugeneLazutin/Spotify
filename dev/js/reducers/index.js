@@ -1,21 +1,14 @@
 import { combineReducers } from 'redux';
-import { LOGIN } from '../constants/actionTypes';
-import searchReducer from './searchReducer';
-import playerReducer from './playerReducer';
-
-function mainReducer (state = { isLogged: false }, action) {
-    switch (action.type) {
-        case LOGIN:
-            return Object.assign({}, state, {isLogged: action.isLogged});
-        default:
-            return state;
-    }
-}
+import search from './searchReducer';
+import player from './playerReducer';
+import playlist from './playlistReducer';
+import user from './userReducer';
 
 const allReducers = combineReducers({
-    main: mainReducer,
-    search: searchReducer,
-    player: playerReducer
+    search,
+    player,
+    playlist,
+    user
 });
 
 export default allReducers;

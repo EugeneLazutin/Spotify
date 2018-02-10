@@ -1,16 +1,16 @@
 import 'babel-polyfill';
 import 'bootstrap';
+import 'jquery';
 import React from 'react';
-import ReactDOM from "react-dom";
-import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise';
-import createLogger from 'redux-logger';
-import allReducers from './reducers';
-import App from './components/App';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-
+import { applyMiddleware, createStore } from 'redux';
+import createLogger from 'redux-logger';
+import promise from 'redux-promise';
+import thunk from 'redux-thunk';
+import App from './components/App';
+import allReducers from './reducers';
 
 require('../scss/style.scss');
 

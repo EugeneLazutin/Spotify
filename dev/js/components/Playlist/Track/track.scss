@@ -1,0 +1,20 @@
+.playlist-tracks .track {
+  display: flex;
+
+  .track-name {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .track-image {
+    max-width: 52px;
+    display: inline-block;
+  }
+
+  .track-controls {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

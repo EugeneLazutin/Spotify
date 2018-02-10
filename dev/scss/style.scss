@@ -2,6 +2,7 @@
 @import "./variables";
 $fa-font-path: "~font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
+@import './switch.scss';
 
 html {
   min-height: 100%;
@@ -46,4 +47,12 @@ html {
 
 .btn {
   border-radius: 0;
+}
+
+i.fa.disabled {
+  color: darkgrey;
+}
+
+i.fa.active {
+  cursor: pointer;
 }
