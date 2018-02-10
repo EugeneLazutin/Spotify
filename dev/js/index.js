@@ -11,6 +11,7 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import App from './components/App';
 import allReducers from './reducers';
+import { getToken, saveToken } from './services/utils';
 
 require('../scss/style.scss');
 
@@ -20,6 +21,11 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk, promise, logger)
 );
+
+const token = getToken();
+if (token) {
+    saveToken(token);
+}
 
 ReactDOM.render(
     <Provider store={store}>

@@ -11,6 +11,7 @@ export const SET_TRACK_LIST = 'SET_TRACK_LIST';
 export const SET_SONG = 'SET_SONG';
 export const PLAY = 'PLAY';
 export const PAUSE = 'PAUSE';
+export const TOGGLE_LOOP = 'TOGGLE_LOOP';
 
 // playlist
 export const SET_PLAYLIST_PAGE = 'SET_PLAYLIST_PAGE';

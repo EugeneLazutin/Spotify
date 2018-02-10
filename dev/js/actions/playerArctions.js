@@ -1,4 +1,4 @@
-import {SET_TRACK_LIST, SET_SONG, PLAY, PAUSE} from '../constants/actionTypes';
+import {SET_TRACK_LIST, SET_SONG, PLAY, PAUSE, TOGGLE_LOOP} from '../constants/actionTypes';
 
 export const setSong = song => {
     return {
@@ -23,5 +23,11 @@ export const setTrackList = (list) => {
     return {
         type: SET_TRACK_LIST,
         list
+    };
+};
+
+export const toggleLoop = () => {
+    return {
+        type: TOGGLE_LOOP
     };
 };

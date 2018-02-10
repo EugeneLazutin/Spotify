@@ -26,8 +26,8 @@ class SearchBar extends Component {
 
     render () {
         return (
-            <div>
-                <div className="input-group track-search-container col-sm-2">
+            <div className="row">
+                <div className="input-group track-search-container col-sm-6 col-md-5 col-lg-4 col-xl-3">
                     <input onChange={this.updateSearchTerm.bind(this)}
                            onKeyPress={this.onKeyPress.bind(this)}
                            className="form-control" placeholder="Search for..."/>

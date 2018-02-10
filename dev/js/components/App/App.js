@@ -7,14 +7,13 @@ import Playlist from '../../components/Playlist';
 import Playlists from '../../components/Playlists';
 import Search from '../../components/Search';
 import UnauthMenu from './UnauthMenu';
-import { getToken, saveToken } from '../../services/utils';
+import { getToken } from '../../services/utils';
 
 
 class Root extends Component {
-    componentDidMount () {
+    componentWillMount () {
         const token = getToken();
         if (token) {
-            saveToken(token);
             this.props.fetchUser();
         }
     }
@@ -26,16 +25,18 @@ class Root extends Component {
             <div className="container-fluid main-wrapper">
                 <div className="row content-body">
                     {isLogged ? <AuthMenu/> : <UnauthMenu/>}
-                    <main className="col-sm-9 col-md-10">
+                    <main className="col-sm-6 col-md-8 col-lg-10">
                         <Switch>
                             <Route path='/search' component={Search}/>
                             <Route path='/current-track' component={CurrTrack}/>
                             <Route path='/playlist' component={Playlists}/>
                         </Switch>
                     </main>
+                    <Playlist />
                 </div>
-                <Player />
-                <Playlist />
+                <div className="row">
+                    <Player />
+                </div>
             </div>
         );
     }

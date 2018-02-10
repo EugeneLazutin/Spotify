@@ -6,47 +6,93 @@
   border-top: $player-border;
   justify-content: center;
 
-  .controls {
+  .container {
+    display: flex;
+    justify-content: space-between;
 
-    .control {
-      border: 0;
-      background-color: $player-background;
-      margin-right: 10px;
+    .controls {
+      display: flex;
+      align-items: center;
+
+      .control {
+        border: 0;
+        background-color: $player-background;
+        margin-right: 10px;
+        cursor: pointer;
+
+        .active {
+          color: $progress-bar-active-line;
+        }
+      }
     }
-  }
 
-  .time {
-    color: $progress-bar-base-line;
+    .time {
+      color: $main-dark;
+      display: flex;
+      align-items: center;
 
-    &.current {
-      color: $progress-bar-active-line;
-    }
-  }
-
-  .progress-bar-wrapper {
-    position: relative;
-    margin: 10px;
-    max-width: 800px;
-    width: 100%;
-
-    .progress-bar-custom {
-      width: 100%;
-      padding: 10px 0;
-      cursor: pointer;
-
-      .time-line {
-        width: 100%;
-        height: 1px;
-        background-color: $progress-bar-base-line;
-        position: absolute;
+      @media screen and (max-width: $xs-max){
+        display: none;
       }
 
-      .handle {
-        width: 0;
-        height: 1px;
-        background-color: $progress-bar-active-line;
-        transition: width 50ms;
-        position: absolute;
+      &.current {
+        color: $progress-bar-active-line;
+      }
+    }
+
+    .progress-bar-wrapper {
+      position: relative;
+      margin: 10px;
+      max-width: 800px;
+      width: 100%;
+
+      .progress-bar-custom {
+        width: 100%;
+        padding: 10px 0;
+        cursor: pointer;
+
+        .time-line {
+          width: 100%;
+          height: 1px;
+          background-color: $progress-bar-base-line;
+          position: absolute;
+        }
+
+        .handle {
+          width: 0;
+          height: 1px;
+          background-color: $progress-bar-active-line;
+          transition: width 50ms;
+          position: absolute;
+        }
+      }
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
+
+      @media screen and (max-width: $sm-max){
+        display: none;
+      }
+
+      .track-image {
+        max-width: 38px;
+        margin-right: 10px;
+      }
+
+      .track-info {
+        font-size: 11px;
+        line-height: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .info-line {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
       }
     }
   }

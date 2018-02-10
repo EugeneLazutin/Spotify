@@ -51,14 +51,8 @@ class CurrTrack extends Component {
             );
         }
 
-        // TODO: move to separate container
-        return (
-            <div className="current-track">
-                Select some track
-            </div>
-        );
+        return (<div className="current-track"/>);
     }
 }
-
 
 export default CurrTrack;

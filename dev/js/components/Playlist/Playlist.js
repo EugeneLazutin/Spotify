@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import { fixModal } from '../../services/utils';
 import './playlist.scss';
 import Track from './Track';
 
 class Playlist extends Component {
     componentDidMount () {
         $(this.modal).on('hidden.bs.modal', this.props.hidePlaylist);
+        $(this.modal).on('shown.bs.modal', fixModal);
     }
 
     componentWillUnmount () {
         $(this.modal).off('hidden.bs.modal', this.props.hidePlaylist);
+        $(this.modal).off('shown.bs.modal', fixModal);
     }
 
     componentDidUpdate () {
         if (this.props.show && this.props.playlist) {
             $(this.modal).modal('show');
+            fixModal();
         } else {
             $(this.modal).modal('hide');
         }

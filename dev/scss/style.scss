@@ -1,5 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./variables";
+
 $fa-font-path: "~font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 @import './switch.scss';
@@ -30,7 +31,15 @@ html {
   height: 100%;
 
   .content-body {
-    flex: 1;
+    @media screen and (min-width: $xs-max) {
+      height: 100%;
+    }
+
+    flex: 1 1 auto;
+    overflow-y: auto;
+    height: 0;
+    position: relative;
+    align-content: flex-start;
   }
 }
 
@@ -39,6 +48,16 @@ html {
   margin: 10px;
   background-color: $main-dark;
   color: $main-background;
+
+  @media screen and (max-width: $xs-max){
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .active > & {
+    background-color: $spotify-green;
+    color: $main-dark;
+  }
 }
 
 .btn:focus, .form-control:focus {
@@ -63,5 +82,35 @@ i.fa.active {
 
   &:hover {
     color: white;
+  }
+}
+
+.modal {
+  overflow-y: auto;
+}
+
+.modal, .modal-backdrop {
+  position: absolute !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.hidden-xs {
+  @media screen and (max-width: $xs-max) {
+    display: none!important;
+  }
+}
+
+.navigation {
+  @media screen and (max-width: $xs-max) {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+
+    & > a {
+      flex: 1;
+    }
   }
 }

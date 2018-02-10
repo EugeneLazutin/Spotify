@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { Component } from 'react';
 
 class SongItem extends Component {
@@ -23,25 +24,34 @@ class SongItem extends Component {
                         {song.name}
                     </div>
                 </div>
-                <div className={'control' + (isSelected ? ' selected' : '')}>
-                    <img src={isSelected && isPlaying ? '/content/pause.svg' : '/content/play.svg'} className="image"/>
-                </div>
+                {song.preview_url
+                    ? playControl(isSelected, isPlaying)
+                    : null}
             </div>
         );
     }
 
     play () {
-        if(this.props.song.id === this.props.songId) {
-            if(this.props.isPlaying) {
-                this.props.pause();
+        if(this.props.song.preview_url) {
+            if (this.props.song.id === this.props.songId) {
+                if (this.props.isPlaying) {
+                    this.props.pause();
+                } else {
+                    this.props.play();
+                }
             } else {
-                this.props.play();
+                this.props.onTrackSelected();
+                this.props.setSong(this.props.song);
             }
-        } else {
-            this.props.onTrackSelected();
-            this.props.setSong(this.props.song);
         }
     }
 }
+
+const playControl = (isSelected, isPlaying) => {
+    return (
+        <div className={classnames({'control': true, 'selected': isSelected})}>
+            <img src={isSelected && isPlaying ? '/content/pause.svg' : '/content/play.svg'} className="image"/>
+        </div>);
+};
 
 export default SongItem;

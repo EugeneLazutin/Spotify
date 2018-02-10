@@ -14,9 +14,7 @@ class Playlists extends Component {
     }
 
     componentDidMount () {
-        if(this.props.isLogged) {
-            this.props.fetchPlaylists(1);
-        }
+        this.props.fetchPlaylists(1);
     }
 
     search (query) {

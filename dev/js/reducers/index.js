@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import search from './searchReducer';
+import { LOGOUT } from '../constants/actionTypes';
 import player from './playerReducer';
 import playlist from './playlistReducer';
+import search from './searchReducer';
 import user from './userReducer';
 
 const allReducers = combineReducers({
@@ -11,4 +12,12 @@ const allReducers = combineReducers({
     user
 });
 
-export default allReducers;
+const rootReducer = (state, action) => {
+    if (action.type === LOGOUT) {
+        state = undefined;
+    }
+
+    return allReducers(state, action)
+};
+
+export default rootReducer;
