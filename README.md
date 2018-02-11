@@ -1,3 +1,4 @@
 # Spotify
 
-blah blah blah
+npm i
+npm run start
