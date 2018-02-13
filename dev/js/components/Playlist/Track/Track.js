@@ -71,18 +71,9 @@ class Track extends Component {
     }
 
     play () {
-        const {track, trackId, isPlaying, play, pause, setSong, onChoose} = this.props;
-        if (track.preview_url) {
-            if (track.id === trackId) {
-                if (isPlaying) {
-                    pause();
-                } else {
-                    play();
-                }
-            } else {
-                onChoose();
-                setSong(this.props.track);
-            }
+        if (this.props.track.preview_url) {
+            this.props.onChoose();
+            this.props.setSong(this.props.track);
         }
     }
 }

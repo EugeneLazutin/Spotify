@@ -11,6 +11,9 @@ function playerReducer (state = defaultState, action) {
         case SET_TRACK_LIST:
             return Object.assign({}, state, {list: action.list});
         case SET_SONG:
+            if(state.song && state.song.id === action.song.id) {
+                return Object.assign({}, state, {isPlaying: !state.isPlaying});
+            }
             return Object.assign({}, state, {song: action.song, isPlaying: true, time: 0});
         case PLAY:
             if (state.song && !state.isPlaying) {

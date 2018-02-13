@@ -15,12 +15,15 @@ class Player extends Component {
         this.handleEndedEvent = this.handleEndedEvent.bind(this);
     }
 
-    componentDidUpdate () {
+    componentDidUpdate (prevProps) {
         const isPlaying = !this.audio.paused && !this.audio.ended && this.audio.readyState > 2;
         if (this.props.isPlaying && !isPlaying) {
             this.audio.play();
         } else if (!this.props.isPlaying && isPlaying) {
             this.audio.pause();
+        }
+        if(prevProps.song && prevProps.song.id !== this.props.song.id) {
+            this.audio.currentTime = 0;
         }
     }
 

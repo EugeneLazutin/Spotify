@@ -33,16 +33,8 @@ class SongItem extends Component {
 
     play () {
         if(this.props.song.preview_url) {
-            if (this.props.song.id === this.props.songId) {
-                if (this.props.isPlaying) {
-                    this.props.pause();
-                } else {
-                    this.props.play();
-                }
-            } else {
-                this.props.onTrackSelected();
-                this.props.setSong(this.props.song);
-            }
+            this.props.onTrackSelected();
+            this.props.setSong(this.props.song);
         }
     }
 }
